@@ -38,6 +38,11 @@ TEST_F(CppADCGTest, EigenCGD) {
     ASSERT_EQ(traits::dummy_precision(), 100. * CppAD::numeric_limits<CGD>::epsilon());
     ASSERT_EQ(traits::highest(), CppAD::numeric_limits<CGD>::max());
     ASSERT_EQ(traits::lowest(), CppAD::numeric_limits<CGD>::min());
+    ASSERT_EQ(traits::digits(), std::numeric_limits<double>::digits);
+    ASSERT_EQ(traits::min_exponent(), std::numeric_limits<double>::min_exponent);
+    ASSERT_EQ(traits::max_exponent(), std::numeric_limits<double>::max_exponent);
+    ASSERT_EQ(traits::infinity(), CppAD::numeric_limits<CGD>::infinity());
+    ASSERT_NE(traits::quiet_NaN(), traits::quiet_NaN());
 
     CGD x = 2.0;
     ASSERT_EQ(conj(x), x);
@@ -45,7 +50,8 @@ TEST_F(CppADCGTest, EigenCGD) {
     ASSERT_EQ(imag(x), 0.0);
     ASSERT_EQ(abs2(x), 4.0);
 
-    // Outputing a matrix
+    // Outputting a matrix
+    // On Eigen5 this test call Eigen::NumTraits::max_digits10 method
     Matrix<CGD, 1, 1> X;
     X(0, 0) = 1;
     std::stringstream stream_out;
@@ -91,6 +97,11 @@ TEST_F(CppADCGTest, EigenADCGD) {
     ASSERT_EQ(traits::dummy_precision(), 100. * std::numeric_limits<double>::epsilon());
     ASSERT_EQ(traits::highest(), (std::numeric_limits<double>::max)());
     ASSERT_EQ(traits::lowest(), (std::numeric_limits<double>::min)());
+    ASSERT_EQ(traits::digits(), std::numeric_limits<double>::digits);
+    ASSERT_EQ(traits::min_exponent(), std::numeric_limits<double>::min_exponent);
+    ASSERT_EQ(traits::max_exponent(), std::numeric_limits<double>::max_exponent);
+    ASSERT_EQ(traits::infinity(), CppAD::numeric_limits<CGD>::infinity());
+    ASSERT_NE(traits::quiet_NaN(), traits::quiet_NaN());
 
     ADCGD x = CGD(2.0);
     ASSERT_EQ(conj(x), x);
@@ -98,7 +109,8 @@ TEST_F(CppADCGTest, EigenADCGD) {
     ASSERT_EQ(imag(x), 0.0);
     ASSERT_EQ(abs2(x), 4.0);
 
-    // Outputing a matrix
+    // Outputting a matrix
+    // On Eigen5 this test call Eigen::NumTraits::max_digits10 method
     Matrix<ADCGD, 1, 1> X;
     X(0, 0) = ADCGD(1);
     std::stringstream stream_out;

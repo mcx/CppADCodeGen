@@ -91,6 +91,47 @@ struct NumTraits<CppAD::cg::CG<Base> > {
         return CppAD::numeric_limits<CppAD::cg::CG<Base> >::digits10;
     }
 
+    /**
+     * the number of radix digits
+     */
+    static int digits() {
+      return std::numeric_limits<Base>::digits;
+    }
+
+    /**
+     * the number of decimal digits required to uniquely represent all distinct values of the type
+     */
+    static int max_digits10() {
+      return std::numeric_limits<Base>::max_digits10;
+    }
+
+    /**
+     * the lowest possible value, such that the radix raised to the power exponent-1 is a normalized floating-point number
+     */
+    static int min_exponent() {
+      return std::numeric_limits<Base>::min_exponent;
+    }
+
+    /**
+     * the highest possible value, such that the radix raised to the power exponent-1 is a normalized floating-point number
+     */
+    static int max_exponent() {
+      return std::numeric_limits<Base>::max_exponent;
+    }
+
+    /**
+     * representation of positive infinity
+     */
+    static CppAD::cg::CG<Base> infinity() {
+      return CppAD::numeric_limits<CppAD::cg::CG<Base> >::infinity();
+    }
+
+    /**
+     * a non-signaling "not-a-number"
+     */
+    static CppAD::cg::CG<Base> quiet_NaN() {
+      return CppAD::numeric_limits<CppAD::cg::CG<Base> >::quiet_NaN();
+    }
 };
 
 /**
@@ -160,6 +201,48 @@ struct NumTraits<CppAD::AD<CppAD::cg::CG<Base> > > {
      */
     static int digits10() {
         return CppAD::numeric_limits<CGBase>::digits10;
+    }
+
+    /**
+     * the number of radix digits
+     */
+    static int digits() {
+      return std::numeric_limits<Base>::digits;
+    }
+
+    /**
+     * the number of decimal digits required to uniquely represent all distinct values of the type
+     */
+    static int max_digits10() {
+      return std::numeric_limits<Base>::max_digits10;
+    }
+
+    /**
+     * the lowest possible value, such that the radix raised to the power exponent-1 is a normalized floating-point number
+     */
+    static int min_exponent() {
+      return std::numeric_limits<Base>::min_exponent;
+    }
+
+    /**
+     * the highest possible value, such that the radix raised to the power exponent-1 is a normalized floating-point number
+     */
+    static int max_exponent() {
+      return std::numeric_limits<Base>::max_exponent;
+    }
+
+    /**
+     * representation of positive infinity
+     */
+    static CppAD::AD<CGBase> infinity() {
+      return CppAD::numeric_limits<CppAD::AD<CGBase>>::infinity();
+    }
+
+    /**
+     * a non-signaling "not-a-number"
+     */
+    static CppAD::AD<CGBase> quiet_NaN() {
+      return CppAD::numeric_limits<CppAD::AD<CGBase>>::quiet_NaN();
     }
 
 };
